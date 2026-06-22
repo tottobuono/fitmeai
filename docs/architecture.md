@@ -83,7 +83,7 @@ Stesso contratto `TryOnRequest`; cambia solo la sorgente del "body".
 | Componente             | Stato        | Note                                   |
 |------------------------|--------------|----------------------------------------|
 | Scaffolding monorepo   | ✅ Fatto     | Task 1                                  |
-| Ambiente locale        | ⬜ Da fare   | Task 2 (docker-compose, env)            |
+| Ambiente locale        | ✅ Fatto     | Task 2 — docker-compose (pg/redis/minio)|
 | Modelli di dominio     | ⬜ Da fare   | Task 3                                  |
 | Astrazione + Mock      | ⬜ Da fare   | Task 4                                  |
 | API job try-on         | ⬜ Da fare   | Task 5                                  |
