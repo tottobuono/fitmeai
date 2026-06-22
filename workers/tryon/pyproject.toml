@@ -1,0 +1,23 @@
+[project]
+name = "fitme-tryon-worker"
+version = "0.1.0"
+description = "Worker async che consuma i job di try-on dalla coda ed esegue i provider"
+requires-python = ">=3.11"
+# Riusa il dominio del backend: `fitme-api` va installato nello stesso ambiente
+# (vedi README). Non e' listato come dependency perche' e' un pacchetto locale, non su PyPI.
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["worker"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

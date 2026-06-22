@@ -50,7 +50,30 @@ docker compose down -v            # ferma e CANCELLA i dati (reset pulito)
 - I volumi locali (`postgres_data`, `redis_data`, `minio_data`) possono contenere dati
   personali: trattali come tali e usa `down -v` per ripulirli quando servono reset.
 
+## Backend API (apps/api)
+
+Setup ed esecuzione in locale (con l'infrastruttura sopra attiva):
+
+```bash
+cd apps/api
+python -m venv .venv
+./.venv/Scripts/python -m pip install -e ".[dev]"   # Windows; su Unix: .venv/bin/python
+
+# applica le migrazioni (legge DATABASE_URL da .env / ambiente)
+./.venv/Scripts/python -m alembic upgrade head
+
+# avvia l'API
+./.venv/Scripts/python -m uvicorn app.main:app --reload --port 8000
+```
+
+Endpoint principali:
+- `GET /health` — liveness.
+- `POST /tryon-jobs` — crea un job (stato `queued`), lo persiste e ne accoda l'id su Redis.
+- `GET /tryon-jobs/{id}` — stato e risultato del job.
+
+Test: `./.venv/Scripts/python -m pytest` (usano SQLite in-memory + coda fake, nessuna infra richiesta).
+
 ## Prossimi passi
-- **Task 3** — modelli di dominio condivisi (`packages/shared`, `apps/api/.../domain`).
-- **Task 5/6/7** — quando `api`, `worker` e `web` avranno un Dockerfile, verranno aggiunti
-  a `docker-compose.yml` come servizi dedicati.
+- **Task 6** — worker che consuma la coda Redis ed esegue i job via provider.
+- **Task 7** — frontend Next.js; quando `api`/`worker`/`web` avranno un Dockerfile,
+  verranno aggiunti a `docker-compose.yml` come servizi dedicati.

@@ -84,9 +84,9 @@ Stesso contratto `TryOnRequest`; cambia solo la sorgente del "body".
 |------------------------|--------------|----------------------------------------|
 | Scaffolding monorepo   | ✅ Fatto     | Task 1                                  |
 | Ambiente locale        | ✅ Fatto     | Task 2 — docker-compose (pg/redis/minio)|
-| Modelli di dominio     | ⬜ Da fare   | Task 3                                  |
-| Astrazione + Mock      | ⬜ Da fare   | Task 4                                  |
-| API job try-on         | ⬜ Da fare   | Task 5                                  |
-| Worker async           | ⬜ Da fare   | Task 6                                  |
+| Modelli di dominio     | ✅ Fatto     | Task 3 — Pydantic + tipi TS (contratto) |
+| Astrazione + Mock      | ✅ Fatto     | Task 4 — provider abstraction + factory |
+| API job try-on         | ✅ Fatto     | Task 5 — FastAPI + Postgres/Alembic + Redis |
+| Worker async           | ✅ Fatto     | Task 6 — consumer Redis + retry/backoff |
 | Frontend minimale      | ⬜ Da fare   | Task 7                                  |
 | Baseline privacy/log   | ⬜ Da fare   | Task 8                                  |
